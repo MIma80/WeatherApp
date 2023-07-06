@@ -1,0 +1,45 @@
+﻿@model CityWeather
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/StyleSheet.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1 class="margin-left">Weather</h1>
+<div class="text-center margin-top-200 content-center">
+    <div class="w-30 content-center">
+        <div class="w-90 box test">
+            <div class="text-left w-50">
+                <h3>
+                    @Model.CityName
+                </h3>
+                <h3 class="font-small text-dark-grey">
+                    @Model.DateAndTime.ToShortDateString()
+                </h3>
+                <h3 class="font-small text-dark-grey">
+                    @Model.DateAndTime.ToShortTimeString() AM
+                </h3>
+            </div>
+            <div class="vl"></div>
+            <div class="text w-50">
+                <h3 class="margin-left text-left">
+                    @Model.TemperatureFahrenheit &deg;F
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-center">
+    <a href="/" class="font-small">
+        Back to Weather home page
+    </a>
+</div>
+
+</body>
+</html>
