@@ -3,14 +3,14 @@
 @{
     void PrintCity(CityWeather cityWeather, string color)
     {
-        <div class ="w-30 content-center">
+        <div class ="w-25 content-center">
             <div class="w-90 box test @color">
                 <div class="text-left w-50">
                     <h3>
                         @cityWeather.CityName
                     </h3>
                     <h3 class="font-small text-dark-grey">
-                        @cityWeather.DateAndTime.ToShortDateString()
+                        @cityWeather.DateAndTime.ToShortTimeString()
                     </h3>
                     <a href="/weather/@cityWeather.CityUniqueCode" class="font-small">
                         Details
