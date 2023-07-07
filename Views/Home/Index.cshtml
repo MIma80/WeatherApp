@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<CityWeather>
-
+@{
+    ViewBag.Title = "Weather";
+}
 @{
     void PrintCity(CityWeather cityWeather, string color)
     {
@@ -27,17 +29,7 @@
     }
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Weather App</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="~/StyleSheet.css">
-</head>
-<body>
-<h1 class="margin-left">Weather</h1>
-
-    <div class="text-center margin-top-200 content-center">
+<div class="text-center margin-top-200 content-center">
     @foreach (var city in Model)
     {
         @switch (city.TemperatureFahrenheit)
@@ -54,5 +46,3 @@
         }
     }
 </div>
-</body>
-</html>
