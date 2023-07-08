@@ -2,47 +2,11 @@
 @{
     ViewBag.Title = "Weather";
 }
-@{
-    void PrintCity(CityWeather cityWeather, string color)
-    {
-        <div class ="w-25 content-center">
-            <div class="w-90 box test @color">
-                <div class="text-left w-50">
-                    <h3>
-                        @cityWeather.CityName
-                    </h3>
-                    <h3 class="font-small text-dark-grey">
-                        @cityWeather.DateAndTime.ToShortTimeString()
-                    </h3>
-                    <a href="/weather/@cityWeather.CityUniqueCode" class="font-small">
-                        Details
-                    </a>
-                </div>
-                <div class="vl"></div>
-                <div class="text w-50">
-                    <h3 class="margin-left text-left">
-                        @cityWeather.TemperatureFahrenheit &deg;F
-                    </h3>
-                </div>
-            </div>
-        </div>
-    }
-}
+
 
 <div class="text-center margin-top-200 content-center">
     @foreach (var city in Model)
     {
-        @switch (city.TemperatureFahrenheit)
-        {
-            case < 44:
-                PrintCity(city, "blue-back");
-                break;
-            case >= 44 and < 74:
-                PrintCity(city, "yellow-back");
-                break;
-            case > 74:
-                PrintCity(city, "orange-back");
-                break;
-        }
+        <partial name="_IndexPartial" model="city"></partial>
     }
 </div>

@@ -1,0 +1,44 @@
+﻿@model CityWeather
+
+@{
+    void PrintCity(CityWeather cityWeather)
+    {
+        var color = "";
+        switch (cityWeather.TemperatureFahrenheit)
+        {
+            case < 44:
+                color = "blue-back";
+                break;
+            case >= 44 and < 74:
+                color = "yellow-back";
+                break;
+            case > 74:
+                color = "orange-back";
+                break;
+        }
+        <div class="w-25 content-center">
+            <div class="w-90 box test @color">
+                <div class="text-left w-50">
+                    <h3>
+                        @cityWeather.CityName
+                    </h3>
+                    <h3 class="font-small text-dark-grey">
+                        @cityWeather.DateAndTime.ToShortTimeString()
+                    </h3>
+                    <a href="/weather/@cityWeather.CityUniqueCode" class="font-small">
+                        Details
+                    </a>
+                </div>
+                <div class="vl"></div>
+                <div class="text w-50">
+                    <h3 class="margin-left text-left">
+                        @cityWeather.TemperatureFahrenheit &deg;F
+                    </h3>
+                </div>
+            </div>
+        </div>
+    }
+}
+@{
+    PrintCity(Model);
+}
