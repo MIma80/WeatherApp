@@ -1,5 +1,8 @@
+using WeatherApp.ServiceContracts;
+using WeatherApp.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ICityWeatherService, CityWeatherService>();
 var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();

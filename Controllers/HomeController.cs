@@ -1,45 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WeatherApp.Models;
+using WeatherApp.ServiceContracts;
 
 namespace WeatherApp.Controllers
 {
     public class HomeController : Controller
     {
-        public List<CityWeather> weatherList = new List<CityWeather>
+        private readonly ICityWeatherService _cityWeatherService;
+        public HomeController(ICityWeatherService cityWeatherService)
         {
-            new CityWeather
-            {
-                CityUniqueCode = "LDN",
-                CityName = "London",
-                DateAndTime = DateTime.Parse("2030-01-01 3:00"),
-                TemperatureFahrenheit = 32
-            },
-            new CityWeather
-            {
-                CityUniqueCode = "PAR",
-                CityName = "Paris",
-                DateAndTime = DateTime.Parse("2030-01-01 9:00"),
-                TemperatureFahrenheit = 82
-            },
-            new CityWeather
-            {
-                CityUniqueCode = "NYC",
-                CityName = "NewYork",
-                DateAndTime = DateTime.Parse("2030-01-01 3:00"),
-                TemperatureFahrenheit = 60
-            }
-        };
-
+            _cityWeatherService = cityWeatherService;
+        }
         [Route("/")]
         public IActionResult Index()
         {
-            return View(weatherList);
+            return View(_cityWeatherService.CitiesWeather);
         }
 
         [Route("/weather/{cityCode}")]
         public IActionResult WeatherDetails(string cityCode)
         {
-            return View(weatherList.FirstOrDefault(p => p.CityUniqueCode == cityCode));
+            return View(_cityWeatherService.CitiesWeather.FirstOrDefault(p => p.CityUniqueCode == cityCode));
         }
     }
 }
